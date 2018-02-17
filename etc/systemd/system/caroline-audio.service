@@ -1,0 +1,13 @@
+[Unit]
+Description=Alsaucm for CAROLINE sound fix
+After=display-manager.service alsa-reload.service
+
+[Service]
+user=root
+group=root
+ExecStart=/usr/bin/caroline-audio
+Type=oneshot
+RemainAfterExit=true
+
+[Install]
+WantedBy=multi-user.target

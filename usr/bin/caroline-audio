@@ -1,0 +1,14 @@
+#!/bin/sh
+
+while true; do
+	OUT="$(sudo alsaucm -c sklnau8825adi set _verb HiFi)"
+	COUNT=$(echo $OUT | wc)
+	if [[ $OUT == "0" ]]
+		then
+		break
+	fi
+	sleep 1
+done
+
+
+

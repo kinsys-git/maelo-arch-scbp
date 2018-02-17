@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE khotnewstuff3>
+<hotnewstuffregistry>
+ <stuff category="">
+  <name>Glassified</name>
+  <providerid>https://api.kde-look.org/ocs/v1/</providerid>
+  <author>painkiller101</author>
+  <homepage>https://store.kde.org/p/998878</homepage>
+  <licence></licence>
+  <version>4.1.0</version>
+  <rating>86</rating>
+  <downloads>136622</downloads>
+  <installedfile>/tmp/81388-Glassified.tar.gz</installedfile>
+  <id>998878</id>
+  <releasedate>2010-02-14</releasedate>
+  <summary>This is a glassified Plasma Theme.&lt;br />
+&lt;br />
+Version 4 should be ready and compatible with the latest KDE SC 4.4.&lt;br />
+If you can find problems or bugs. tell me please.&lt;br />
+&lt;br />
+&lt;br />
+See also:&lt;br />
+&lt;strong>Glassified Splash&lt;/strong>&lt;br />
+&lt;a...</summary>
+  <changelog></changelog>
+  <preview>https://cn.pling.com/cache/100x100/img//hive/content-pre1/81388-1.jpg</preview>
+  <previewBig>https://cn.pling.com/cache/770x540/img//hive/content-pre1/81388-1.jpg</previewBig>
+  <payload>https://dl.opendesktop.org/api/files/downloadfile/id/1460732720/s/38c97581811fd4e2e19d517944534b08/t/1518538976/o/1/81388-Glassified.tar.gz</payload>
+  <status>installed</status>
+ </stuff>
+</hotnewstuffregistry>

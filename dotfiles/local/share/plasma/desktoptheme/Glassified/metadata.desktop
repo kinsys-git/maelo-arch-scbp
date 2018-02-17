@@ -1,0 +1,15 @@
+[Desktop Entry]
+Name=Glassified
+Comment=Glass Theme for KDE4
+X-KDE-PluginInfo-Author=M. Nowaczyk
+X-KDE-PluginInfo-Email=painkiller.kde@googlemail.com
+X-KDE-PluginInfo-Name=Glassified
+X-KDE-PluginInfo-Version=4.1.0
+X-KDE-PluginInfo-Website=
+X-KDE-PluginInfo-Category=Plasma Theme
+X-KDE-PluginInfo-Depends=KDE4
+X-KDE-PluginInfo-License=GPL
+X-KDE-PluginInfo-EnabledByDefault=true
+
+[Settings]
+UseNativeWidgetStyle=false

@@ -1,0 +1,10 @@
+[KFileDialog Settings]
+Recent Files[$e]=startup.sh,file:$HOME/dotfiles/bashrc,file:$HOME/dotfiles/startup.sh
+Recent URLs[$e]=file:$HOME/dotfiles/
+
+[MainWindow]
+Height 1600=973
+MenuBar=Disabled
+State=AAAA/wAAAAD9AAAAAAAABD8AAAPNAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAA
+ToolBarsMovable=Disabled
+Width 2400=1087
