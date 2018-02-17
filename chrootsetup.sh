@@ -154,7 +154,7 @@ setupskel() {
 }	
 
 installsoftware() {
-	pacman -Syy dmidecode reflector packagekit-qt5 python-pyqt5 qt5-declarative git python-dbus python-yaml wmctrl xdotool python-gobject dialog plasma-meta kde-applications-meta sddm xorg-server xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox vim plasma-nm latte-dock plasma5-applets-active-window-control qt5-graphicaleffects --noconfirm --needed
+	pacman -Syy alsa-utils dmidecode reflector packagekit-qt5 python-pyqt5 qt5-declarative git python-dbus python-yaml wmctrl xdotool python-gobject dialog plasma-meta kde-applications-meta sddm xorg-server xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox vim plasma-nm latte-dock plasma5-applets-active-window-control qt5-graphicaleffects --noconfirm --needed
 	systemctl enable sddm.service
 	systemctl enable NetworkManager
 }
@@ -182,19 +182,22 @@ scbp() {
         wget https://raw.githubusercontent.com/maelodic/maelo-arch-scbp/master/atmel_mxt_ts.c
 	cp atmel_mxt_ts.c linux/drivers/input/touchscreen/atmel_mxt_ts.c 
 	cd linux
-        yes "" | make localmodconfig
+        yes "\n" | make localmodconfig
         make
         make install
         make modules_install
         cp arch/x86/boot/bz* /boot/vmlinuz
- chmod +x /usr/bin/caroline-audio
+	chmod +x /usr/bin/caroline-audio
         cp arch/x86/boot/bz* /boot/vmlinuz-linux
         systemctl enable caroline-audio
         mkinitcpio -p linux
         grub-mkconfig -o /boot/grub/grub.cfg
-        cd ..
+	cd ..
+        git clone https://aur.archlinux.org/xkeyboard-config-chromebook.git
+	cd xkeyboard-config-chromebook
+	yes | makepkg -sri
+       	cd /root
         rm -rf tmp/
-        pacaur -S xkeyboard-config-chromebook --noconfirm --noedit
 }
 
 # Main Function
