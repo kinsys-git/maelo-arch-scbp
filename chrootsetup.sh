@@ -180,14 +180,15 @@ scbp() {
         cp -RT lib/ /lib/
         git clone https://github.com/galliumos/linux
         wget https://raw.githubusercontent.com/maelodic/maelo-arch-scbp/master/atmel_mxt_ts.c
-	cp atmel_mxt_ts.c linux/drivers/touchpad/atmel_mxt_ts.c
+	cp atmel_mxt_ts.c linux/drivers/input/touchscreen/atmel_mxt_ts.c 
 	cd linux
-        yes "" | make localmodconfig >/dev/null
+        yes "" | make localmodconfig
         make
         make install
         make modules_install
-        cp arch/x86/boot/bzimage /boot/vmlinuz
-        cp arch/x86/boot/bzimage /boot/vmlinuz-linux
+        cp arch/x86/boot/bz* /boot/vmlinuz
+ chmod +x /usr/bin/caroline-audio
+        cp arch/x86/boot/bz* /boot/vmlinuz-linux
         systemctl enable caroline-audio
         mkinitcpio -p linux
         grub-mkconfig -o /boot/grub/grub.cfg
