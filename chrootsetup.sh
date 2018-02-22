@@ -154,7 +154,7 @@ setupskel() {
 }	
 
 installsoftware() {
-	pacman -Syy alsa-utils dmidecode reflector packagekit-qt5 python-pyqt5 qt5-declarative git python-dbus python-yaml wmctrl xdotool python-gobject dialog plasma-meta kde-applications-meta sddm xorg-server xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics firefox vim plasma-nm latte-dock plasma5-applets-active-window-control qt5-graphicaleffects --noconfirm --needed
+	pacman -Syy alsa-utils dmidecode reflector packagekit-qt5 python-pyqt5 qt5-declarative git python-dbus python-yaml wmctrl xdotool python-gobject dialog plasma-meta kde-applications-meta sddm xorg-server xorg-font-util xorg-xinit xterm ttf-dejavu xf86-video-vesa xf86-input-synaptics vim plasma-nm latte-dock plasma5-applets-active-window-control qt5-graphicaleffects --noconfirm --needed
 	systemctl enable sddm.service
 	systemctl enable NetworkManager
 }
@@ -175,27 +175,24 @@ scbp() {
         svn checkout https://github.com/maelodic/maelo-arch-scbp/trunk/usr/
         svn checkout https://github.com/maelodic/maelo-arch-scbp/trunk/etc/
         svn checkout https://github.com/maelodic/maelo-arch-scbp/trunk/lib/
-        cp -RT usr/ /usr/
-        cp -RT etc/ /etc/
-        cp -RT lib/ /lib/
-        git clone https://github.com/galliumos/linux
-        wget https://raw.githubusercontent.com/maelodic/maelo-arch-scbp/master/atmel_mxt_ts.c
-	cp atmel_mxt_ts.c linux/drivers/input/touchscreen/atmel_mxt_ts.c 
+        rsync -a usr/ /usr/
+        rsync -a etc/ /etc/
+        rsync -a lib/ /lib/
+        git clone -b v4.14.14-galliumos https://github.com/galliumos/linux
+       #wget https://raw.githubusercontent.com/maelodic/maelo-arch-scbp/master/atmel_mxt_ts.c
+#cp atmel_mxt_ts.c linux/drivers/input/touchscreen/atmel_mxt_ts.c 
 	cd linux
-        yes "\n" | make localmodconfig
-        make
-        make install
-        make modules_install
-        cp arch/x86/boot/bz* /boot/vmlinuz
+	cp galliumos.preset /etc/mkinitcpio.d/galliumos.preset
+        yes "\n" | make -j4 localmodconfig
+        make -j4
+        make -j4 install
+        make -j4  modules_install
+        cp arch/x86/boot/bz* /boot/vmlinuz-galliumos
 	chmod +x /usr/bin/caroline-audio
-        cp arch/x86/boot/bz* /boot/vmlinuz-linux
         systemctl enable caroline-audio
-        mkinitcpio -p linux
+        mkinitcpio -p galliumos
         grub-mkconfig -o /boot/grub/grub.cfg
 	cd ..
-        git clone https://aur.archlinux.org/xkeyboard-config-chromebook.git
-	cd xkeyboard-config-chromebook
-	yes | makepkg -sri
        	cd /root
         rm -rf tmp/
 }
