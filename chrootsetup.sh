@@ -178,12 +178,13 @@ scbp() {
         rsync -a usr/ /usr/
         rsync -a etc/ /etc/
         rsync -a lib/ /lib/
-        git clone -b v4.14.14-galliumos https://github.com/galliumos/linux
-       #wget https://raw.githubusercontent.com/maelodic/maelo-arch-scbp/master/atmel_mxt_ts.c
-#cp atmel_mxt_ts.c linux/drivers/input/touchscreen/atmel_mxt_ts.c 
+        git clone https://github.com/galliumos/linux
+        wget https://raw.githubusercontent.com/maelodic/maelo-arch-scbp/master/atmel_mxt_ts.c
+	cp atmel_mxt_ts.c linux/drivers/input/touchscreen/atmel_mxt_ts.c 
+	wget https://raw.githubusercontent.com/maelodic/maelo-arch-scbp/master/galliumos.preset
+	cp galliumos.preset /etc/mkinitcpio.d/
 	cd linux
-	cp galliumos.preset /etc/mkinitcpio.d/galliumos.preset
-        yes "\n" | make -j4 localmodconfig
+        make -j4 localmodconfig
         make -j4
         make -j4 install
         make -j4  modules_install
