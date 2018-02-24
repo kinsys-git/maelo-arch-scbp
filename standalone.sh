@@ -10,6 +10,8 @@ scbp() {
         rsync -a usr/ /usr/
         rsync -a etc/ /etc/
         rsync -a lib/ /lib/
+	ln -s /usr/share/alsa/ucm/sklnau8825adi /usr/share/alsa/ucm/Google-Caroline-1.0-Caroline
+	ln -s /usr/share/alsa/ucm/sklnau8825adi.conf /usr/share/alsa/ucm/Google-Caroline-1.0-Caroline/Google-Caroline-1.0-Caroline.conf
 	git clone https://github.com/galliumos/linux
 	wget https://raw.githubusercontent.com/maelodic/maelo-arch-scbp/master/atmel_mxt_ts.c
         cp atmel_mxt_ts.c linux/drivers/touchpad/atmel_mxt_ts.c
