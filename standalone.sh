@@ -1,7 +1,12 @@
 #!/bin/bash
 
 scbp() {
-        cd /root
+        if [[ $EUID -ne 0 ]]; then
+   		echo "This script must be run as root" 
+		exit 1
+	fi
+	
+	cd /root
         mkdir tmp/
         cd tmp/
         svn checkout https://github.com/galliumos/galliumos-skylake/trunk/usr/
@@ -34,11 +39,9 @@ scbp() {
 }
 
 main() {
-	if [[ $EUID -ne 0 ]]; then
-   		echo "This script must be run as root" 
-   		exit 1
-	fi
 	scbp
 }
+
+main
 
 #EOF
