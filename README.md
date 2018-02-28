@@ -33,7 +33,9 @@ cd; curl -LO https://mrchromebox.tech/firmware-util.sh && sudo bash firmware-uti
 Download Arch from here: https://www.archlinux.org/download/ (Pick a mirror close to your location, and then choose the .iso file)
 
 Create an Arch Linux USB drive, or you can install it to your SD Card if you do not plan on installing Arch or any partitions to your SD card:
+
 Windows: Use Rufus - https://rufus.akeo.ie/
+
 Linux or ChromeOS: Use the dd command-
 ```
 dd if=(ARCH ISO LOCATION) of=(DRIVE - not partition - that you will be installing arch from.) status=progress
@@ -49,6 +51,7 @@ You can use this guide here to install Arch Linux: https://wiki.archlinux.org/in
 Alternatively, I have a nifty install script located here: https://github.com/maelodic/arch
 
 In a nutshell, for an easy install process-
+
 -Connect to wifi:
 ```
 wifi-menu
