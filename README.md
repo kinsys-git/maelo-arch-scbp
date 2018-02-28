@@ -71,7 +71,7 @@ The pen will work for mouse input, but the touchscreen and trackpad will not
 
 (The remainder of these steps can be skipped by using my install script - running these commands)
 ```
-sudo pacman -Sy git wget rsync svn bc --noconfirm --needed
+sudo pacman -Sy git wget rsync svn bc alsa-utils --noconfirm --needed
 wget https://raw.githubusercontent.com/maelodic/maelo-arch-scbp/master/standalone.sh
 chmod +x standalone.sh
 sudo ./standalone.sh
@@ -81,7 +81,7 @@ If you want to do it yourself:
 
 Grab the files needed to perform all the steps:
 ```
-sudo pacman -S rsync bc wget git
+sudo pacman -S rsync bc wget git alsa-utils
 ```
 
 Clone the GalliumOS skylake files:
@@ -155,6 +155,7 @@ rsync
 wget
 bc
 git
+alsa-utils
 ```
 
 CHRX requires older GPT format, so after running CHRX, delete mmcblk0p6 and mmcblk0p7, make mmcblk0p6 1 MB unformatted with the BIOS Boot flag, and then make mmcblk0p7 ext4 and mount / to it including the boot folder.
