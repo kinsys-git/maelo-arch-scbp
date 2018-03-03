@@ -10,6 +10,7 @@ scbp() {
         svn checkout https://github.com/galliumos/galliumos-skylake/trunk/usr/
         svn checkout https://github.com/galliumos/galliumos-skylake/trunk/etc/
         svn checkout https://github.com/galliumos/galliumos-skylake/trunk/lib/
+	wget -P /etc/systemd/system https://raw.githubusercontent.com/galliumos/galliumos-skylake/master/debian/galliumos-skylake.service
         rsync -a usr/ /usr/
         rsync -a etc/ /etc/
         rsync -a lib/ /lib/
