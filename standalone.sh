@@ -24,7 +24,8 @@ scbp() {
 	cp /root/tmp/galliumos.preset /etc/mkinitcpio.d/galliumos.preset
 	cp /root/tmp/galliumos-init-skylake /usr/bin/galliumos-init-skylake
 	cd /root/tmp/linux
-	make localmodconfig
+	wget https://raw.githubusercontent.com/maelodic/maelo-arch-scbp/testing/config
+	mv config .config 
 	make -j4
 	make -j4 modules_install
 	make -j4 install
@@ -33,7 +34,7 @@ scbp() {
         mkinitcpio -p galliumos
         grub-mkconfig -o /boot/grub/grub.cfg
         cd ..
-        #rm -rf /root/tmp/
+        rm -rf /root/tmp/
 }
 
 main() {
