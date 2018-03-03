@@ -72,7 +72,7 @@ The pen will work for mouse input, but the touchscreen and trackpad will not
 
 **5. Recompile the Kernel**
 
-(The remainder of these steps can be skipped by using my install script - running these commands)
+(The remainder of these steps can be skipped by using my install script - running these commands. If you need a working headphone jack, please scroll down to the "BONUS" section near the bottom)
 ```
 sudo pacman -Sy git wget rsync svn bc alsa-utils --noconfirm --needed
 wget https://raw.githubusercontent.com/maelodic/maelo-arch-scbp/master/standalone.sh
@@ -147,6 +147,18 @@ grub-mkconfig -o /boot/grub/grub.cfg
 And then reboot. At the grub menu, choose Advanced and then the GalliumOS kernel. Everything should work out of the box.
 
 
+**BONUS**
+To enable use of the headphone jack, grab the following and place them in your home folder:
+```
+wget -P ~/ https://raw.githubusercontent.com/maelodic/maelo-arch-scbp/master/headphones.sh
+wget -P ~/ https://raw.githubusercontent.com/maelodic/maelo-arch-scbp/master/speakers.sh
+chmod +x ~/headphones.sh
+chmod +x ~/speakers.sh
+```
+
+To switch to headphone output, run "~/headphones.sh"    
+To switch back to speakers, run "~/speakers.sh"
+
 **TL;DR For Linux veterans**
 
 Open the standalone.sh script and read through it. Basically just replacing the atmel_mxt_ts.c input driver file with one that has a few edits, and then compiling the GalliumOS kernel. Running the standalone.sh script in any WM will produce a working kernel, which will need to be selected in the GRUB Advanced menu. You can change the default entry to boot into the kernel by changing vmlinuz-linux > vmlinuz-galliumos.
@@ -167,3 +179,5 @@ Audio requires alsa-utils for the command to run. The included script creates th
 ```
 sudo galliumos-init-skylake
 ```
+
+The headphones and speakers scripts will switch audio output from headphones and speakers respectively. There's no jack detection, but you can use any audio type right now on the Samsung Chromebook Pro.
