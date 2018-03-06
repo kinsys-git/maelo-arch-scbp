@@ -157,7 +157,7 @@ To switch back to speakers, run "~/speakers.sh"
 
 **TL;DR For Linux veterans**
 
-Open the standalone.sh script and read through it. Basically just replacing the atmel_mxt_ts.c input driver file with one that has a few edits, and then compiling the GalliumOS kernel. Running the standalone.sh script in any WM will produce a working kernel, which will need to be selected in the GRUB Advanced menu. You can change the default entry to boot into the kernel by changing vmlinuz-linux > vmlinuz-galliumos.
+Open the standalone.sh script and read through it. Basically just recompiling the kernel with GalliumOS config and patches.
 
 Standalone script requires the following packages (that aren't included with the base install):
 ```
