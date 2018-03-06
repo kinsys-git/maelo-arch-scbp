@@ -18,7 +18,9 @@ scbp() {
 	wget -P /root/tmp/ https://raw.githubusercontent.com/maelodic/maelo-arch-scbp/master/galliumos.preset
 	cp /root/tmp/galliumos.preset /etc/mkinitcpio.d/galliumos.preset
 	cd /root/tmp/linux
-	make localmodconfig
+	cp galliumos/config ./.config
+	chmod +x galliumos/diffs/apply_all.sh
+	sh galliumos/diffs/apply_all.sh
 	make -j4
 	make -j4 modules_install
 	make -j4 install
