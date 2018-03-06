@@ -16,17 +16,20 @@ scbp() {
         rsync -a lib/ /lib/
 	ln -s /usr/share/alsa/ucm/sklnau8825adi /usr/share/alsa/ucm/Google-Caroline-1.0-Caroline
 	ln -s /usr/share/alsa/ucm/sklnau8825adi.conf /usr/share/alsa/ucm/Google-Caroline-1.0-Caroline/Google-Caroline-1.0-Caroline.conf
-	git clone https://github.com/galliumos/linux
-	wget -P /root/tmp/ https://raw.githubusercontent.com/maelodic/maelo-arch-scbp/master/atmel_mxt_ts.c
-        cp /root/tmp/atmel_mxt_ts.c /root/tmp/linux/drivers/input/touchscreen/atmel_mxt_ts.c
+	git clone -b v4.14.14-galliumos https://github.com/galliumos/linux
+	#wget -P /root/tmp/ https://raw.githubusercontent.com/maelodic/maelo-arch-scbp/master/atmel_mxt_ts.c
+        #cp /root/tmp/atmel_mxt_ts.c /root/tmp/linux/drivers/input/touchscreen/atmel_mxt_ts.c
         wget -P /root/tmp/ https://raw.githubusercontent.com/maelodic/maelo-arch-scbp/master/galliumos-init-skylake
 	chmod +x galliumos-init-skylake
 	wget -P /root/tmp/ https://raw.githubusercontent.com/maelodic/maelo-arch-scbp/master/galliumos.preset
 	cp /root/tmp/galliumos.preset /etc/mkinitcpio.d/galliumos.preset
 	cp /root/tmp/galliumos-init-skylake /usr/bin/galliumos-init-skylake
 	cd /root/tmp/linux
-	wget https://raw.githubusercontent.com/maelodic/maelo-arch-scbp/testing/config
-	mv config .config 
+	cp galliumos/config ./.config
+	#wget https://raw.githubusercontent.com/maelodic/maelo-arch-scbp/testing/config
+	#mv config .config
+	chmod +x galliumos/diffs/apply_all.sh
+	sh galliumos/diffs/apply_all.sh
 	make -j4
 	make -j4 modules_install
 	make -j4 install
