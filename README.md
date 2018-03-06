@@ -66,16 +66,12 @@ chmod +x install.sh
 ./install.sh
 ```
 
-**4. Boot into any desktop enviroment**
-
-The pen will work for mouse input, but the touchscreen and trackpad will not
-
-**5. Recompile the Kernel**
+**4. Recompile the Kernel**
 
 (The remainder of these steps can be skipped by using my install script - running these commands. If you need a working headphone jack, please scroll down to the "BONUS" section near the bottom)
 ```
 sudo pacman -Sy git wget rsync svn bc alsa-utils --noconfirm --needed
-wget https://raw.githubusercontent.com/maelodic/maelo-arch-scbp/master/standalone.sh
+wget https://raw.githubusercontent.com/maelodic/maelo-arch-scbp/master/standalone.sh --no-cache
 chmod +x standalone.sh
 sudo ./standalone.sh
 ```
@@ -123,14 +119,14 @@ Enable the audio service:
 sudo systemctl enable galliumos-skylake
 ```
 
-Compile the GalliumOS kernel with my modified touchpad driver (When prompted during the configure make, just hold enter for a few seconds to use all defaults):
+Compile the GalliumOS kernel with their configuration and patches:
 ```
 cd ~
-git clone https://github.com/galliumos/linux
+git clone -b v4.14.14-galliumos https://github.com/galliumos/linux
 cd linux
-wget https://raw.githubusercontent.com/maelodic/maelo-arch-scbp/master/atmel_mxt_ts.c
-mv atmel_mxt_ts.c /root/tmp/linux/drivers/input/touchscreen/atmel_mxt_ts.c
-make localmodconfig
+cp galliumos/config .config
+chmod +x galliumos/diffs/apply_all.sh
+sh galliumos/diffs/apply_al.sh
 make -j4
 make -j4 modules_install
 make -j4 install
