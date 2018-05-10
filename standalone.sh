@@ -14,7 +14,7 @@ scbp() {
         rsync -a etc/ /etc/
         rsync -a lib/ /lib/
 	cd /root/tmp
-	git clone https://github.com/galliumos/linux
+	git clone -b v4.14.14-galliumos https://github.com/galliumos/linux
 	wget -P /root/tmp/ https://raw.githubusercontent.com/maelodic/maelo-arch-scbp/master/galliumos.preset
 	cp /root/tmp/galliumos.preset /etc/mkinitcpio.d/galliumos.preset
 	cd /root/tmp/linux
